@@ -1,0 +1,81 @@
+<!doctype HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<style>
+  body {font-family: Calibri, Georgia; font-size: 11pt; }
+  h1, h2, h3 {font-family: Cambria, Arial, Helvetica; font-weight: lighter}
+  h1 {color: #010819}
+  h2, h3 {color: #170108}
+  h1 {font-size: 26pt; }
+  h2 {font-size: 14pt; }
+  h3 {font-size: 12pt; }
+  pre {font-weight: bold}
+  .code, code {font-family: Courier New; font-weight: bold; }
+  table {border-radius: 5px; border: 2px solid black; }
+	td, th {border: 1px solid gray; }
+	ul.innerlist {list-style: none; margin: 0; padding: 0}
+	td {width: 12px; text-align: right}
+</style>
+</head>
+
+<body>
+<div id="content">
+<h1>CSC 440/Cryptography<br />Assignment 2</h1>
+<hr />
+<h2>Guidelines</h2>
+<p>
+Unless otherwise indicated, all plaintexts and ciphertexts are alphabetic, that is, they only consist of the letters of the alphabet.  The ciphersystems used here compute with the integer representations of the letters, which are 0 for A, 1 for B, ..., 25 for Z.  For convenience, here is the table of multiplicative inverses mod 26:
+<table>
+<tr>
+<td style="text-align:left">x</td><td>1</td><td>3</td><td>5</td><td>7</td><td>9</td><td>11</td><td>15</td><td>17</td><td>19</td><td>21</td><td>23</td><td>25</td>
+</tr>
+<tr>
+<td>x&nbsp;<sup>-1</sup></td><td>1</td><td>9</td><td>21</td><td>15</td><td>3</td><td>19</td><td>7</td><td>23</td><td>11</td><td>5</td><td>17</td><td>25</td>
+</tr>
+</table>
+</p>
+<p>
+Please use either Java 8 (or greater) or Python 3.7 (or greater) when asked to write a program.
+</p>
+<h2>40 points</h2>
+<p>
+1.  (10 points) Recall that a value <em>a</em> has an inverse mod <em>n</em> iff <em>a</em> is relatively prime to <em>n</em>.  Compute the multiplicative inverses for the values 1 to 34 mod 35.  I suggest writing a small program to do this.  We have not discussed the extended Euclidean algorithm, which is the usual way of finding inverse, so it's fine for each <em>a</em> to try all possible values to find its inverse.  Put your results in a table containing only those values that do have inverses along with the inverses.
+</p>
+<p>
+2.  (15 points) You are going to develop a program that uses pseudorandom bits to encrypt text.
+<ul>
+<li>Implement the Blum-Blum-Shub PRNG as specified in the textbook in section 5.1 (Pseudorandom bit generation) in a method that returns a list of bits.  The method takes the parameters <em>p</em>, <em>q</em>, <em>x</em>, and <em>count</em>.  The first three are as specified in the BBS algorithm.  The <em>count</em> parameter specifies how many bits to generate.
+<li>Write a method that takes as a parameter a list of bits as a plaintext string and a list of key bits and that returns a list of ciphertext bits.
+<li>Write a main method or main program that reads in a textfile called <code>bbstext.txt</code> containing 4 lines:
+<ul>
+<li>value for p
+<li>value for q
+<li>value for x
+<li>plaintext bit string
+</ul>
+<li>It then uses the above methods to encrypt that plaintext string and then prints the ciphertext bit string.
+</ul>
+</p>
+<p>
+3. (15 points) In this problem, you will carry out encryption and decryption using the Hill cipher with the 2x2 matrix:
+<pre>
+| 4  7 |
+| 5 11 |
+</pre>
+<ol type="a">
+<li>Encrypt the plaintext <em>february</em>.  Encode the letters with the values a=0, b=1, ..., z=25.  Because the alphabet size is 26, all calculations will be done mod 26.  Provide the ciphertext in alphabetic form.
+<li>Calculate the decryption matrix.  This is the inverse of the encryption matrix.  Please see section 3.8 for how to do this.
+<li>Decrypt the ciphertext <em>KTKZPFXJ</em>.
+</ol><h2>Submission instructions</h2>
+<p>
+First of all, <strong>please place your name at the top of every file you submit</strong>.  Not doing so will cause points to be deducted.  Please type responses to questions 1 and 3 in a single text, Microsoft Word, or PDF document called <code>assignment2.{txt,docx,pdf}</code>.  Place that file and the program you write for question 2 into a zip file called <code>assignment2.zip</code> and submit that to the D2L submission folder provided for it.
+</p>
+<p>
+<em>Document last updated on January 20th, 2021.</em>
+</p>
+</div>
+</body>
+
+</html>
