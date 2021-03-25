@@ -1,0 +1,5 @@
+Monoalphabetic: during encryption process, cipher alphabet for each plain alphabet is fixed for a given key, which means it has fixed substitution over the whole message. It is easily affected by cryptanalysis.
+
+Polyalphabetic: during encryption process, cipher alphabet for the plain alphabet can vary at various points, which means it has lots of substitutions at the different places in the message. The mapping between plaintext and ciphertext has several possibilities.
+
+For analyzing a ciphertext, the first thing is to see the composition of the whole message. If the number is strangely fewer or more than the alphabet, we could assume it is polyalphabetic. Besides, we could use frequency analysis in cryptanalysis. In that case, for monoalphabetic situation, the distribution has the same pattern as how the letter shows up. If it is polyalphabetic, then the result will be more consistent.

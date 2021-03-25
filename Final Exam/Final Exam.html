@@ -1,0 +1,146 @@
+<!doctype HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<style>
+  body {font-family: Calibri, Georgia; font-size: 11pt; }
+  h1, h2, h3 {font-family: Cambria, Arial, Helvetica; font-weight: lighter}
+  h1 {color: #010819}
+  h2, h3 {color: #170108}
+  h1 {font-size: 26pt; }
+  h2 {font-size: 14pt; }
+  h3 {font-size: 12pt; }
+  pre {font-weight: bold}
+  .code, code {font-family: Courier New; font-weight: bold; }
+  table {border-radius: 5px; border: 2px solid black; }
+	td, th {border: 1px solid gray; }
+	ul.innerlist {list-style: none; margin: 0; padding: 0}
+	td {width: 12px; text-align: right}
+</style>
+</head>
+
+<body>
+<div id="content">
+<h1>CSC 440/Cryptography<br />Take-home final exam</h1>
+<h2 style="color: red">Updated Sunday, March 14th (<em>&pi;</em> day)</h2>
+<hr />
+<p>A. <strong>Monoalphabetic vs. polyalphabetic</strong> (5 points) Explain briefly how to analyze a ciphertext to determine whether it was the result of a monoalphabetic cipher or the result of a polyalphabetic one.
+</p>
+
+<p>B. <strong>Breaking Vigen&eacute;re with a crib</strong> (5 points) You are given the ciphertext below that you know to be the result of applying the Vigen&eacute;re cipher with a key of no more than 15 letters.  You suspect that the crib word "crypto" occurs in the first 25 letters. Use that to break it.
+<pre>
+ATCXYKXANYXHUTFBTKDYESGXZOBPAFBTRFRTDHTXIQFQATZEZRBWBQSRSHKFVGNJOIVKKNJDXSCDSVK
+QSBVEFBEXHOQSSPXFADLABDBIDIQNEILEXDMTHRYWITKKXWYTSPPHOAQTHUXWBEENJHMAFYNCTJYUTO
+FFMYNOAHKMSBVUFBTGMGSGYDTYRNELJHRWFOJATISOMBLPIYXRVAVGXQVKJVLHEENTQFNQMDIEGEDQZ
+GFWEMQAHSSDTDKPEFKVELFFYQPQIJCKYRZJBEMLRSGYVBLQEIETGTHUKJMDSNKHMNYXSRYITKDMNNXS
+CTISZGDIEXYRXIPGCZZVPRXCIAXNTHUPTAWHWGQSQFTSMELETZENVKYQPFIXSGIWVTVAYTGSHIETQLZ
+QPRDWCKRYQPSREHMNYXSRYITKDMMVOJWEMEYANIDUTXXFOULAIFFGXZQBUNLVFHRG
+</pre>
+In your answer, give the plaintext (formatted to read normally), the key, and the author.
+</p>
+<p>
+C. <strong>Finding <em>p</em> and <em>q</em> in RSA</strong> (10 points) We discussed several times that knowing any one of the secret keys in RSA would lead to knowing the others.  Remember that we always know <em>n</em>=<em>pq</em> and <em>e</em>.  But there are <em>four</em> secret values:
+<ol>
+<li><em>p</em>
+<li><em>q</em>
+<li>(<em>p</em>-1)(<em>q</em>-1), which is also called &Phi;(<em>n</em>)
+<li><em>d</em>
+</ol>
+Clearly if one knows <em>p</em>, one can find <em>q</em> and, from those two values, &Phi;(<em>n</em>) and <em>d</em>.
+</p>
+<p>But what if we only know &Phi;(<em>n</em>)?  As it turns out, algebra will help us find the values <em>p</em>+<em>q</em> and <em>p</em>-<em>q</em>:
+<ul>
+<li>Use &Phi;(<em>n</em>) = (<em>p</em>-1)(<em>q</em>-1) = <em>pq</em>-<em>p</em>-<em>q</em>+1 to determine <em>p</em>+<em>q</em>.
+<li>Use (<em>p</em>-<em>q</em>)<sup>2</sup> = <em>p</em><sup>2</sup>-2<em>pq</em>+<em>q</em><sup>2</sup> to find <em>p</em>-<em>q</em>.  (Hint: Add 4<em>pq</em>-4<em>pq</em> to the right side).
+</ul>
+From those two values, one can easily find <em>p</em> and <em>q</em>.
+</p>
+<p>
+Now, apply this technique to the values:
+<ul>
+<li><strong><em>n</em> = 898607526590969848863184322603417866026220164569611859928589</strong>
+<li><strong>&Phi;(<em>n</em>) = 898607526590969848863184322601520436048324820954773803576156</strong>
+</ul>
+Your answer will be the values of <em>p</em> and <em>q</em>.
+</p>
+<p>D. <strong>Computing a discrete log</strong> (20 points) Use the "baby step, giant step" approach to finding <em>x</em> in the formula &beta; = &alpha;<sup><em>x</em></sup> (mod <em>p</em>) given the following values:
+<ul>
+<li><strong><em>p</em> = 1416545561</strong>
+<li><strong>&alpha; = 1035</strong>
+<li><strong>&beta; = 1369318585</strong>
+</ul>
+</p>
+<p>
+Please name the program <code>BSGS.java</code> or <code>bsgs.py</code>.  You may hardcode the inputs.
+</p>
+<p>E. <strong>Implementing AES</strong> (20 points) Implement (almost) the first round of AES with a 128-bit key. Given a 128-bit plaintext and a 128-bit key, this involves:
+<ol>
+<li>Performing a bitwise XOR with the plaintext and the key
+<li>Applying byte substitution for each byte in the state
+<li>Applying shift rows on the state table rows
+<li>Applying mix columns on the state table columns
+</ol>
+Output the state table at this point.  The "almost" above means that you don't have to perform the XOR with the state and the first sub-key.
+</p>
+<p>
+Please name the program <code>AESEncryptRound.java</code> or <code>aesencryptround.py</code>.  You may hard code the inputs.
+</p>
+<p>
+Please use the following inputs, which are the same as given in Appendix B of the FIPS197 document:
+<pre>
+plaintext = 0x3243f6a8885a308d313198a2e0370734
+key =       0x2b7e151628aed2a6abf7158809cf4f3c
+</pre>
+</p>
+<p>
+The byte substitution, multiply-by-2, an multiply-by-3 tables are available at <a href="AEStables.txt">AEStables.txt</a>.  Each is given as a list where the <em>i</em><sup>th</sup> entry is the value of applying the given operation to <em>i</em>.
+</p>
+<p>
+Please print the state table after each step.  Using the inputs given in Appendix B, my program outputs:
+<pre>
+Original plaintext
+32 88 31 e0
+43 5a 31 37
+f6 30 98 07
+a8 8d a2 34
+
+After ARK with original key
+19 a0 9a e9
+3d f4 c6 f8
+e3 e2 8d 48
+be 2b 2a 08
+
+After SB
+d4 e0 b8 1e
+27 bf b4 41
+11 98 5d 52
+ae f1 e5 30
+
+After SR
+d4 e0 b8 1e
+bf b4 41 27
+5d 52 11 98
+30 ae f1 e5
+
+After MC
+04 e0 48 28
+66 cb f8 06
+81 19 d3 26
+e5 9a 7a 4c
+</pre>
+</p>
+<p>
+My suggestion is to work on the layers in the order given so that it is easy to get partial credit.  I found the mix columns layer the most challenging, which is another reason to leave it to the end.  Also, be careful with byte ordering.  Note that the state table is filled starting at the leftmost byte and in column-major order.  It's a small detail but getting it wrong results in outputs that are not close to what is correct.
+</p>
+<h2>Submission instructions</h2>
+<p>
+There are five submission folders for the final exam, one for each problem.  The first three (problems A, B, and C) are text submissions.  Please enter your answer in the text box displayed when you submit.  In other words, you will not submit a file.  The two programming problems (D and E) are file submissions and, as usual, you will submit your source files into each.
+</p>
+<p>
+<em>Document last updated on March 14th, 2021.</em>
+</p>
+</div>
+</body>
+
+</html>
