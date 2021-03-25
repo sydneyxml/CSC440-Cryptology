@@ -1,0 +1,88 @@
+<!doctype HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<style>
+  body {font-family: Calibri, Georgia; font-size: 11pt; }
+  h1, h2, h3 {font-family: Cambria, Arial, Helvetica; font-weight: lighter}
+  h1 {color: #010819}
+  h2, h3 {color: #170108}
+  h1 {font-size: 26pt; }
+  h2 {font-size: 14pt; }
+  h3 {font-size: 12pt; }
+  pre {font-weight: bold}
+  .code, code {font-family: Courier New; font-weight: bold; }
+  .corrected {color: red}
+  table {border-radius: 5px; border: 2px solid black; }
+	td, th {border: 1px solid gray; }
+	ul.innerlist {list-style: none; margin: 0; padding: 0}
+	td {text-align: center}
+</style>
+</head>
+
+<body>
+<div id="content">
+<h1>CSC 440/Cryptography<br />Assignment</h1>
+<hr />
+<h2>Programming project: Simplified DES, part 2</h2>
+<h2>30 points</h2>
+<p>
+Continue your implementation of SDES.  Call this program <code>SDESEncrypt.java</code> or <code>sdesencrypt.py</code> and write the program so that it contains a method the method <code>encrypt(plaintext, key)</code>, which returns an integer ciphertext.  Write the program so that it can be run from the command line taking two parameters:
+<ol>
+<li>the key integer
+<li>the plaintext integer
+</ol>
+Note that these parameters are given in the opposite order from the previous assignment!  When run, the program should print the ciphertext as a single integer.  In other words, the program must be stand-alone.
+</p>
+<p>
+<strong>Generating the key schedule</strong>  Indexing bits correctly is important for deriving the sub-keys.  The text does not make it clear how that's done for SDES.  Please use this method as this is what I used in generating the test results.  The bits in a string are numbered left-to-right start from 1.  From the 9-bit key, the sub-key for round <em>i</em> is found by taking the eight bits starting at index <em>i</em> in the key, wrapping around if necessary.  To make that clear, here are the index sequences for each sub-key:
+<table>
+<tr><th>Round</th><th>Sequence</th><th>Subkeys for<br/> key 011111111</th></tr>
+<tr><td>1</td><td>12345678</td><td>01111111</td></tr>
+<tr><td>2</td><td>23456789</td><td>11111111</td></tr>
+<tr><td>3</td><td>34567891</td><td>11111110</td></tr>
+<tr><td>4</td><td>45678912</td><td>11111101</td></tr>
+</table>
+</p>
+<p>
+My results are in this table.  As already noted, it's easy to get this wrong!  If your results depart from these, let me know.  As several people pointed out last, I had an error in my implemenation.
+<table>
+<tr><th>Plaintext</th><th>Key</th><th>Ciphertext</th></tr>
+<tr><td>0</td><td>0</td><td>1323 (010100101011)</td></tr>
+<tr><td>0</td><td>85</td><td>1097 (010001001001)</td></tr>
+<tr><td>0</td><td>170</td><td>1973 (011110110101)</td></tr>
+<tr><td>0</td><td>255</td><td>599 (001001010111)</td></tr>
+<tr><td>0</td><td>341</td><td>3631 (111000101111)</td></tr>
+<tr><td>0</td><td>511</td><td>1726 (011010111110)</td></tr>
+<tr><td>1365</td><td>0</td><td>2249 (100011001001)</td></tr>
+<tr><td>1365</td><td>85</td><td>2699 (101010001011)</td></tr>
+<tr><td>1365</td><td>170</td><td>2799 (101011101111)</td></tr>
+<tr><td>1365</td><td>255</td><td>1567 (011000011111)</td></tr>
+<tr><td>1365</td><td>341</td><td>1867 (011101001011)</td></tr>
+<tr><td>1365</td><td>511</td><td>769 (001100000001)</td></tr>
+<tr><td>2730</td><td>0</td><td>3326 (110011111110)</td></tr>
+<tr><td>2730</td><td>85</td><td>2086 (100000100110)</td></tr>
+<tr><td>2730</td><td>170</td><td>2228 (100010110100)</td></tr>
+<tr><td>2730</td><td>255</td><td>3266 (110011000010)</td></tr>
+<tr><td>2730</td><td>341</td><td>1296 (010100010000)</td></tr>
+<tr><td>2730</td><td>511</td><td>1846 (011100110110)</td></tr>
+<tr><td>4095</td><td>0</td><td>2369 (100101000001)</td></tr>
+<tr><td>4095</td><td>85</td><td>317 (000100111101)</td></tr>
+<tr><td>4095</td><td>170</td><td>464 (000111010000)</td></tr>
+<tr><td>4095</td><td>255</td><td>1793 (011100000001)</td></tr>
+<tr><td>4095</td><td>341</td><td>2122 (100001001010)</td></tr>
+<tr><td>4095</td><td>511</td><td>2772 (101011010100)</td></tr>
+</table>
+</p>
+<h2>Submission instructions</h2>
+<p>
+Please make sure your name appears in comments at the top of the source file and that the program file is given the name I specifed above.  Not doing either of these will cost points.  Submit the .java  or .py file (not zipped!) to the D2L submission folder provided for it.
+</p>
+<p>
+<em>Document last updated on February 14th, 2021.</em>
+</p>
+</div>
+</body>
+
+</html>
