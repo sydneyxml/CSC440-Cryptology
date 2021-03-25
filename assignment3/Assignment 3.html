@@ -1,0 +1,77 @@
+<!doctype HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<style>
+  body {font-family: Calibri, Georgia; font-size: 11pt; }
+  h1, h2, h3 {font-family: Cambria, Arial, Helvetica; font-weight: lighter}
+  h1 {color: #010819}
+  h2, h3 {color: #170108}
+  h1 {font-size: 26pt; }
+  h2 {font-size: 14pt; }
+  h3 {font-size: 12pt; }
+  pre {font-weight: bold}
+  .code, code {font-family: Courier New; font-weight: bold; }
+  table {border-radius: 5px; border: 2px solid black; }
+	td, th {border: 1px solid gray; }
+	ul.innerlist {list-style: none; margin: 0; padding: 0}
+	td {width: 12px; text-align: right}
+</style>
+</head>
+
+<body>
+<div id="content">
+<h1>CSC 440/Cryptography<br />Assignment 3</h1>
+<hr />
+<h2>Guidelines</h2>
+<p>
+Unless otherwise indicated, all plaintexts and ciphertexts are alphabetic, that is, they only consist of the letters of the alphabet.  The ciphersystems used here compute with the integer representations of the letters, which are 0 for A, 1 for B, ..., 25 for Z.  For convenience, here is the table of multiplicative inverses mod 26:
+<table>
+<tr>
+<td style="text-align:left">x</td><td>1</td><td>3</td><td>5</td><td>7</td><td>9</td><td>11</td><td>15</td><td>17</td><td>19</td><td>21</td><td>23</td><td>25</td>
+</tr>
+<tr>
+<td>x&nbsp;<sup>-1</sup></td><td>1</td><td>9</td><td>21</td><td>15</td><td>3</td><td>19</td><td>7</td><td>23</td><td>11</td><td>5</td><td>17</td><td>25</td>
+</tr>
+</table>
+</p>
+<p>
+Please use either Java 8 (or greater) or Python 3.7 (or greater) when asked to write a program.
+</p>
+<h2>40 points</h2>
+<p>
+These first three exercises are purely mathematical.  The functions being computed will become important when we discuss public-key encryption.  You may certainly write code to find the solutions but I only want to you to submit the answers.
+</p>
+<p>
+1. (5 points) Answer exercise 4 in section 3.13 of the textbook.
+</p>
+<p>
+2. (5 points) Answer exercise 8 in section 3.13 of the textbook.
+</p>
+<p>
+3. (5 points) Answer exercise 9 in section 3.13 of the textbook.
+</p>
+<p>
+The next exercise demonstrates how a known plaintext attack based on solving a set of linear equations works against Hill.  This linearity property is one that will be avoided in, for example, DES and AES.  As a bonus, it gives you a little practice in using linear equations to cryptanalyze!
+</p>
+<p>
+4. (15 points) Answer exercise 3 in section 6.6 of the textbook.  As is usual with the Hill cipher, the letters are encoded from 0 to 25 (a is 0, b is 1, and so forth).  Assume that left multiplication was used, as explained in my notes on the Hill cipher.  The textbook uses right multiplication which, as I mentioned in lecture, is mathematically fine but uncommon in my experience.  Provide the 2x2 encryption matrix as the answer with its values in the range 0 to 25.  To make sure you get partial credit in case your matrix is incorrect, show your work as well.
+</p>
+<p>
+This last exercise is meant to show that you use multiple encryption is important.
+</p>
+<p>
+5. (10 points) Answer exercise 12 in section 6.6 of the textbook.  One of the methods can be attacked with fewer steps than required by brute force.  Indicate which one and describe the attack, clearly explaining why it requires fewer steps than brute force.
+</p>
+<h2>Submission instructions</h2>
+<p>
+First of all, <strong>please place your name at the top of every file you submit</strong>.  Not doing so will cause points to be deducted.  Please type responses in a single text, Microsoft Word, or PDF document called <code>assignment3.{txt,docx,pdf}</code>.  Submit that file (not zipped!) to the D2L submission folder provided for it.
+</p>
+<p>
+<em>Document last updated on January 28th, 2021.</em>
+</p>
+</div>
+</body>
+
+</html>
