@@ -1,0 +1,59 @@
+<!doctype HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<style>
+  body {font-family: Calibri, Georgia; font-size: 11pt; }
+  h1, h2, h3 {font-family: Cambria, Arial, Helvetica; font-weight: lighter}
+  h1 {color: #010819}
+  h2, h3 {color: #170108}
+  h1 {font-size: 26pt; }
+  h2 {font-size: 14pt; }
+  h3 {font-size: 12pt; }
+  pre {font-weight: bold}
+  .code, code {font-family: Courier New; font-weight: bold; }
+  table {border-radius: 5px; border: 2px solid black; }
+	td, th {border: 1px solid gray; }
+	ul.innerlist {list-style: none; margin: 0; padding: 0}
+	td {width: 12px; text-align: right}
+</style>
+</head>
+
+<body>
+<div id="content">
+<h1>CSC 440/Cryptography<br />Diffie-Hellman Key Exchange</h1>
+<hr />
+<p>
+<h2>10 points</h2>
+<p>
+You and I are going to use the DHKE protocol to agree upon a secret key.  Then you will bit-wise XOR that secret key with your seven-digit Depaul ID number as in integer (that is, a leading 0 is dropped).  A seven-digit decimal number contains no more than 24 bits so the key will be 24 bits.  Use my course notes on DHKE to see the function of the various variables.  I will play the part of Alice and you the part of Bob.  All values exchanged must be in decimal.  The protocol will proceed as follows:
+<ol>
+<li>We will use these public values: &alpha; = 1026, <em>p</em> = 33554467.
+<li>I will select my secret value <em>x</em> and email each of you the integer that is the value of &alpha;<sup><em>x</em></sup> mod <em>p</em>.
+<li>You will select your secret value <em>y</em> and compute <em>z</em> = &alpha;<sup><em>y</em></sup> mod <em>p</em> and the ciphertext integer <em>c</em> resulting from the bit-wise XOR of our agreed-upon key &alpha;<sup><em>xy</em></sup> mod <em>p</em> with your student id number.  Put these into a text document with the three lines:
+<pre>
+Your name
+z as a decimal integer
+c as a decimal integer
+</pre>
+For example:
+<pre>
+John Rogers
+12284838
+3628334
+</pre>
+<li>Using <em>z</em><sup><em>x</em></sup> mod <em>p</em> I will decrypt <em>c</em> and verify that it is your id number.  If not, I'll notify you and we'll try it again.
+</ol>
+</p>
+<h2>Submission instructions</h2>
+<p>
+Call the document <code>DHKE.txt</code>.  Make sure it only contains the three lines specified above.  Submit that file to the D2L submission folder provided for it.
+</p>
+<p>
+<em>Document last updated on February 15th, 2021.</em>
+</p>
+</div>
+</body>
+
+</html>
