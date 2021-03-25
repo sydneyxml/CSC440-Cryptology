@@ -1,0 +1,73 @@
+<!doctype HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<style>
+  body {font-family: Calibri, Georgia; font-size: 11pt; }
+  h1, h2, h3 {font-family: Cambria, Arial, Helvetica; font-weight: lighter}
+  h1 {color: #010819}
+  h2, h3 {color: #170108}
+  h1 {font-size: 26pt; }
+  h2 {font-size: 14pt; }
+  h3 {font-size: 12pt; }
+  pre {font-weight: bold}
+  .code, code {font-family: Courier New; font-weight: bold; }
+  .corrected {color: red}
+  table {border-radius: 5px; border: 2px solid black; }
+	td, th {border: 1px solid gray; }
+	ul.innerlist {list-style: none; margin: 0; padding: 0}
+	td {width: 12px; text-align: right}
+</style>
+</head>
+
+<body>
+<div id="content">
+<h1>CSC 440/Cryptography<br />Assignment 4 <span class="corrected">Corrected</span></h1>
+<hr />
+<h2>Programming project: Simplified DES, part 1</h2>
+<h2>30 points</h2>
+<p>
+In either Jave >= 8 or Python >= 3.7 implement one round of encryption of the textbook's simplified DES scheme.  Write a program called <code>SDESRound.java</code> or <code>sdesround.py</code> so that it contains:
+<ul>
+<li>a method called <code>encryptRound(plaintext, subkey)</code> where the plaintext and the subkey are both integers.  As specified in section 7.2 of the text, a plaintext contains 12 bits and, so is in the range 0 to 4095, and the subkey contains 8 bits, and so in the range 0 to 255.  This method performs one round of the simplified DES scheme and returns the ciphertext after that round.
+<li>a main method that takes a plaintext integer and and a subkey integer as command line parameters, calls the encryption method, and prints the resulting ciphertext.  I will run your code as follows:
+<ul>
+<li><code>python sdesround.py 128 250</code>
+<li><code>java SDESRound 128 250</code>
+</ul>
+</ul>
+</p>
+<p>
+Here is <span class="corrected">an updated</span> table with sample inputs and the expected output.
+<table>
+<tr><th>Plaintext</th><th>Subkey</th><th>Ciphertext</th></tr>
+<tr><td>0</td><td>0</td><td>44</td></tr>
+<tr><td>0</td><td>85</td><td>33</td></tr>
+<tr><td>0</td><td>170</td><td>48</td></tr>
+<tr><td>0</td><td>255</td><td>28</td></tr>
+<tr><td>1365</td><td>0</td><td>1390</td></tr>
+<tr><td>1365</td><td>85</td><td>1379</td></tr>
+<tr><td>1365</td><td>170</td><td>1360</td></tr>
+<tr><td>1365</td><td>255</td><td>1398</td></tr>
+<tr><td>2730</td><td>0</td><td>2697</td></tr>
+<tr><td>2730</td><td>85</td><td>2735</td></tr>
+<tr><td>2730</td><td>170</td><td>2716</td></tr>
+<tr><td>2730</td><td>255</td><td>2705</td></tr>
+<tr><td>4095</td><td>0</td><td>4067</td></tr>
+<tr><td>4095</td><td>85</td><td>4047</td></tr>
+<tr><td>4095</td><td>170</td><td>4062</td></tr>
+<tr><td>4095</td><td>255</td><td>4051</td></tr>
+</table>
+</p>
+<h2>Submission instructions</h2>
+<p>
+Please make sure your name appears in comments at the top of the source file.  Submit the .java  or .py file (not zipped!) to the D2L submission folder provided for it.
+</p>
+<p>
+<em>Document last updated on February 4th, 2021.</em>
+</p>
+</div>
+</body>
+
+</html>
