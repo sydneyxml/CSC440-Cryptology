@@ -1,0 +1,93 @@
+<!doctype HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<style>
+  body {font-family: Calibri, Georgia; font-size: 11pt; }
+  h1, h2, h3 {font-family: Cambria, Arial, Helvetica; font-weight: lighter}
+  h1 {color: #010819}
+  h2, h3 {color: #170108}
+  h1 {font-size: 26pt; }
+  h2 {font-size: 14pt; }
+  h3 {font-size: 12pt; }
+  pre {font-weight: bold}
+  .code, code {font-family: Courier New; font-weight: bold; }
+  table {border-radius: 5px; border: 2px solid black; }
+	td, th {border: 1px solid gray; }
+	ul.innerlist {list-style: none; margin: 0; padding: 0}
+	td {width: 12px; text-align: right}
+</style>
+</head>
+
+<body>
+<div id="content">
+<h1>CSC 440/Cryptography<br />Assignment 1</h1>
+<hr />
+<h2>Guidelines</h2>
+<p>
+Unless otherwise indicated, all plaintexts and ciphertexts are alphabetic, that is, they only consist of the letters of the alphabet.  The ciphersystems used here compute with the integer representations of the letters, which are 0 for A, 1 for B, ..., 25 for Z.  For convenience, here is the table of multiplicative inverses mod 26:
+<table>
+<tr>
+<td style="text-align:left">x</td><td>1</td><td>3</td><td>5</td><td>7</td><td>9</td><td>11</td><td>15</td><td>17</td><td>19</td><td>21</td><td>23</td><td>25</td>
+</tr>
+<tr>
+<td>x&nbsp;<sup>-1</sup></td><td>1</td><td>9</td><td>21</td><td>15</td><td>3</td><td>19</td><td>7</td><td>23</td><td>11</td><td>5</td><td>17</td><td>25</td>
+</tr>
+</table>
+</p>
+<p>
+Please use either Java 8 (or greater) or Python 3.7 (or greater) when asked to write a program.
+</p>
+<h2>50 points</h2>
+<p>(15 points) 1. We are using the affine cipher with the key &alpha;=19 and &beta;=12.
+<ol type="a">
+<li>Encrypt the plaintext <em>pandemic</em> and provide the ciphertext.
+<li>Write down the decryption function.
+<li>Decrypt the ciphertext <em>VMYYIZK</em> and provide the plaintext.
+</ol>
+</p>
+<p>(5 points) 2. If an alphabet has 33 letters, which we represent with the integer values 0 to 32, what is the size of the key space for an affine cipher on that alphabet?
+</p>
+<p>(5 points) 3. If an alphabet has 31 letters, what is the size of the key space using the affine cipher?
+</p>
+<p>(10 points) 4. Answer Computer Problem 4 on p. 38.  I recommend writing a program but that's not necessary.  Provide the plaintext and the affine keys &alpha; and &beta;.
+</p>
+
+<hr/>
+<p>
+The next two problems are based on this Vigen&egrave;re ciphertext.
+<pre>
+XVMRNEBXPAEWBZQCDLMOEGSVBYFPAWKKZRSDMKSLOMAKKAAFDWZMZVFPDFWLPMKROWBUDHYYZZWUWDA
+OEGIKLKBVGHNCBZPAMFFYEWQKDSSSDLPIBYDPPVRLJWEZWDVKESOXPVDQHYPQPMKRWECELQZIVTUUDK
+TRJMVTOQRZYJAKXIRPSTELJKGFXNQIPGEXKRUZBLXEAVPRSLSEFVERORFNMGEROCAKHIPRDHZSVWDYH
+FCLJKQEWAUVCVKVLZVYFVEHHSORUEHYXVKVIWHSCKSHNVMCDPSUAUKFTVPOWEYXIFMIWDSFCBWJCCOQ
+BZGHNWICTQOEEXIGWDSQHVCLBFCZOPWJVQKAVKRXSRMOAXWSUAOBLOHSNKKEGYLYEROJDERKSDPAMRO
+HYEZZPSLRBPVREKWGSVUOOEOLJXMCOEUVYFAEOVQYWVDFWRKFPLFFXLOIXVRLZVDGWXIZQDIEOUAHAF
+IICIPSNSARLYKRJVPLIEEUPLTOZMVXDMIRYWQQKFPLIKPUQWCROHMKSHUHWEWAJVYEKXPVUPFPTQCXW
+SUAOBEKAIVTUUDKTRJVMCBEBXTQOXMRGKBGZRNMUGOAAVYWWXQFQOOEOKQQIEHNFFC
+</pre>
+<p>(10 points) 5. Write a program based on the following pseudocode to determine the likely length of the key used to create the above ciphertext.  The key is guaranteed not to contain more than 14 characters.  This is the technique described in section 2.3.1.
+<pre>
+for shift = 1 to 14 do
+  coincidenceCount = 0
+  for index = 0 to ciphertext length - 1 do
+    shiftedIndex = (index + shift) % ciphertext length
+    if ciphertext[index] == ciphertext[shiftedIndex] then
+      coincidenceCount++;
+  print shift, coincidenceCount
+</pre>
+</p>
+<p>(5 points) 6. Please break the above ciphertext using an online resource to help.  There are some sites that, given the ciphertext, determine the key word and provide the plaintext.  Format the plaintext by adding spaces and punctuation.
+</p>
+<h2>Submission instructions</h2>
+<p>
+First of all, <strong>please place your name at the top of every file you submit</strong>.  Not doing so will cause points to be deducted.  Please type responses to questions in a single text, Microsoft Word, or PDF document called <code>assignment1.{txt,docx,pdf}</code>.  Give the programs you write names that will make it easy for me to figure out which program is for which problem.  Place all of the files into a zip file called <code>assignment1.zip</code> and submit that to the D2L submission folder provided for it.
+</p>
+<p>
+<em>Document last updated on January 12th, 2021.</em>
+</p>
+</div>
+</body>
+
+</html>
