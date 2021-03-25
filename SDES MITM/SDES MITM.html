@@ -1,0 +1,56 @@
+<!doctype HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<style>
+  body {font-family: Calibri, Georgia; font-size: 11pt; }
+  h1, h2, h3 {font-family: Cambria, Arial, Helvetica; font-weight: lighter}
+  h1 {color: #010819}
+  h2, h3 {color: #170108}
+  h1 {font-size: 26pt; }
+  h2 {font-size: 14pt; }
+  h3 {font-size: 12pt; }
+  pre {font-weight: bold}
+  .code, code {font-family: Courier New; font-weight: bold; }
+  .corrected {color: red}
+  table {border-radius: 5px; border: 2px solid black; }
+	td, th {border: 1px solid gray; }
+	ul.innerlist {list-style: none; margin: 0; padding: 0}
+	td {text-align: center}
+</style>
+</head>
+
+<body>
+<div id="content">
+<h1>CSC 440/Cryptography<br />Assignment</h1>
+<hr />
+<h2>Programming project: Simplified DES, meet-in-the-middle attack</h2>
+<h2>30 points</h2>
+<p>
+Using the encryption and decryption methods you wrote for SDES, write a program called <code>SDESMitm.java</code> or <code>sdesmitm.py</code> that will carry out a meet-in-the-middle attack on 2SDES.  This system encrypts a plaintext first with one key and then again with a different key.  Please review the attack in the notes and the textbook.  Recall that this is a known-plaintext attack.  I will provide plaintext/ciphertext pairs.  Based on those, you should be able to recover the two 9-bit keys.
+</p>
+<p>
+Write the program so that it can be run from the command line taking four parameters:
+<ol>
+<li>plaintext 1 integer
+<li>ciphertext 1 integer
+<li>plaintext 2 integer
+<li>ciphertext 2 integer
+</ol>
+Two pairs are needed because the first plaintext/ciphertext pair will let you create a short list of key pairs and the second plaintext/ciphertext pair will allow you to narrow that list down to one key pair.  When run, the program should print the two keys.
+</p>
+<p>
+You can test your program on the plaintext/ciphertext pairs 0/247; 4095/2808.  In my implemenation, the firat plaintext/ciphertext pair yields a list containing 49 key pairs.  The second plaintext/ciphertext pair yields a list of 57 key pairs.  These two key pair lists have one pair in common.
+</p>
+<h2>Submission instructions</h2>
+<p>
+Please make sure your name appears in comments at the top of the source file and that the program file is given the name I specifed above.  Not doing either of these will cost points.  Submit the .java  or .py file (not zipped!) to the D2L submission folder provided for it.
+</p>
+<p>
+<em>Document last updated on February 23rd, 2021.</em>
+</p>
+</div>
+</body>
+
+</html>
